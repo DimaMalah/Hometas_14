@@ -23,23 +23,19 @@
 
 function padString(str, newLength, symb, bool = true) {
 
-	if (!str || typeof str !== "string") return "ERROR! you have entered wrong data"; console.log("ERROR! you have entered wrong data");
-	if (!newLength || typeof (newLength) != "number" || isNaN(newLength)) return "ERROR! you have entered wrong amount of symbols"; console.log("ERROR! you have entered wrong amount of symbols");
-	if (typeof (bool) !== "boolean") return "ERROR! You should enter 'true/false'."; console.log("ERROR! You should enter 'true/false'.");
-	if (str.length >= newLength) return str.substr(0, newLength); console.log(str.substr(0, newLength));
-	if (!symb || symb.length > 1) return "ERROR! Enter any symbol, please."; console.log("ERROR! Enter any symbol, please.");
+	if (!str || typeof str !== "string") return "ERROR! you have entered wrong data";
+	if (!newLength || typeof (newLength) != "number" || isNaN(newLength)) return "ERROR! you have entered wrong amount of symbols";
+	if (typeof (bool) !== "boolean") return "ERROR! You should enter 'true/false'.";
+	if (str.length >= newLength) return str.substr(0, newLength);
+	if (!symb || symb.length > 1) return "ERROR! Enter any symbol, please.";
 
-	let newStr = null;
-	if (str.length < newLength) {
-		for (let i = str.length; i = newLength; i++) {
-			newStr += symb
-		}
-		newStr = bool ? (str + newStr) : (newStr + str)
-		return newStr
+	let newStr = '';
 
+	for (let i = str.length; i < newLength; i++) {
+		newStr += symb;
 	}
-
-
+	return bool ? str + newStr : newStr + str;
 }
-console.log(padString("dimon", 9, '*'));
-
+console.log(padString("Dimon", 10, '*'));
+console.log(padString("Dimon", 10, '$', false));
+console.log(padString("Dimon", 4));
